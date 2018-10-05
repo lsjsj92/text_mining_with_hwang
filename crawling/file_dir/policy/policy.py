@@ -69,7 +69,6 @@ def go():
             title_ = title[cnt]
             date_ = date_list[cnt]
             content_ = content[cnt]
-
             writer.writerow((title_, date_, content_))
 
     sys.exit()
