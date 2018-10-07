@@ -19,13 +19,13 @@ def go():
     # wait = WebDriverWait(driver, 2)
     link = []
     title, date_list, content = [], [], []
-    for i in range(16, 31):
+    for i in range(1, 31):
         for j in range(1, 50):
             if i < 10:
                 date = "0" + str(i)
             else:
                 date = str(i)
-            url = 'https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=101&date=201807' + date + '&page=' + str(
+            url = 'https://news.naver.com/main/list.nhn?mode=LSD&mid=sec&sid1=101&date=201809' + date + '&page=' + str(
                 j)
             try:
                 driver.get(url)
@@ -67,7 +67,7 @@ def go():
         except:
             continue
 
-    with open('./economy_news2.csv', 'a', encoding='utf-8', newline='') as f:
+    with open('./economy_news_9m.csv', 'a', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
         for cnt, i in enumerate(title):
             # title_ = re.sub('[^a-zA-Z0-9 ㄱ-ㅣ가-힣]', ' ', title[cnt])

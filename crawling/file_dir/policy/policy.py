@@ -60,7 +60,7 @@ def go():
         except:
             continue
 
-    with open('./policy_news.csv', 'a', encoding='utf-8', newline='') as f:
+    with open('./policy_news_8m.csv', 'a', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
         for cnt, i in enumerate(title):
             #title_ = re.sub('[^a-zA-Z0-9 ㄱ-ㅣ가-힣]', ' ', title[cnt])
@@ -69,6 +69,7 @@ def go():
             title_ = title[cnt]
             date_ = date_list[cnt]
             content_ = content[cnt]
+
             writer.writerow((title_, date_, content_))
 
     sys.exit()

@@ -13,7 +13,7 @@ def main():
 
 # 2. 메인 로직. 한 페이지에서 글 읽어오고 다음페이지로 넘어가서 또 읽어오고.. 반복
 def go():
-    driver = webdriver.Chrome("C:\hwang\driver/chromedriver.exe")
+    driver = webdriver.Chrome("C:\python\driver/chromedriver.exe")
     #wait = WebDriverWait(driver, 2)
     link = []
     title, date_list, content = [],[],[]
@@ -24,7 +24,7 @@ def go():
             url = 'https://entertain.naver.com'
 
             try:
-                driver.get(url+ '/now #sid=106&date=2018-08-'+date+'&page='+str(j))
+                driver.get(url+ '/now #sid=106&date=2018-09-'+date+'&page='+str(j))
                 time_ = random.sample(range(1, 3), 1)
                 time.sleep(int(time_[0]))
                 a = driver.page_source
@@ -66,7 +66,7 @@ def go():
         except:
             continue
 
-    with open('./entertain_news.csv', 'a', encoding='utf-8', newline='') as f:
+    with open('./entertain_news_9m.csv', 'a', encoding='utf-8', newline='') as f:
         writer = csv.writer(f)
         for cnt, i in enumerate(title):
             #title_ = re.sub('[^a-zA-Z0-9 ㄱ-ㅣ가-힣]', ' ', title[cnt])
