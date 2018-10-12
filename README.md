@@ -41,3 +41,28 @@
     - NLP
     - word2vec
     - scikit-learn
+
+** 중간 점검 18.10.12 기준 **
+    1. 크롤러 수집 끝
+    2-1. 단어 사전 구축 진행
+    2-2. 형태소 분석 프로그램 구현 끝
+    2-3. 단어 사전 구축시 자동으로 user dic 만들어주는 프로그램 구현 끝
+    3. LSTM model training 테스트 끝
+    4. tf-idf 테스트 끝
+    5. word2vec 테스트 끝
+    6. local vmware에 nginx, uwsgi 기반 django 서버 띄우기 성공
+** 중간 점검 끝 **
+
+6. 세부적 로직 구현
+    - 장고 구현 -> 텍스트 받고 subprocess로 형태소 분석 python 파일 input 로직 구현
+    - 형태소 분석 해주고 파일로 떨궈주는 프로그램 구현 => 문자열을 input으로 받는 로직은 짜놨음.
+    - prediction 로직 구현
+    - 형태소 분석 된 text와 tf-idf 단어장 비교해서 특징 단어 추출 로직 구현
+    - 위에서 나온 단어를 word2vec에 넣어주는 로직 구현
+
+7. 실제 시각화 구현(웹)
+    - client input -> backend processing -> client output
+    - word2vec visualization
+    - client input sentences
+    - tokenized word sentences
+    - classification label output
