@@ -5,11 +5,12 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-app_name = 'hwangrMain'
+app_name = 'hwangMain'
 
 urlpatterns = [
     url(r'^home/$', views.HwangMain.as_view(), name='home'),
     url(r'^main/$', views.HwangMain.as_view(), name='main'),
+    url(r'^input_value/$', views.HwangMain.as_view(), name='input_value'),
     url(r'^$', views.HwangMain.as_view(), name='index'),
 ]
 
