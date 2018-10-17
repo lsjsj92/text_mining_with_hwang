@@ -43,14 +43,23 @@
     - scikit-learn
 
 ** 중간 점검 18.10.12 기준 **
+
     1. 크롤러 수집 끝
+
     2-1. 단어 사전 구축 진행
+
     2-2. 형태소 분석 프로그램 구현 끝
+
     2-3. 단어 사전 구축시 자동으로 user dic 만들어주는 프로그램 구현 끝
+
     3. LSTM model training 테스트 끝
+
     4. tf-idf 테스트 끝
+
     5. word2vec 테스트 끝
+
     6. local vmware에 nginx, uwsgi 기반 django 서버 띄우기 성공
+
 ** 중간 점검 끝 **
 
 6. 세부적 로직 구현
@@ -66,3 +75,16 @@
     - client input sentences
     - tokenized word sentences
     - classification label output
+
+
+8. 10월 17일 기준 점검
+    - 구현 완료된 것
+        - predication 로직 구현 완료
+        - text input -> tokenizer -> tokenizer data output 구현 완료
+        - label classification 결과값 출력 ok
+    - 해야할 것
+        - 형태소 분석 소스코드 깃에 올리기
+        - local vmware에서 작업 진행 후 서버에 올리기
+            - 추후에 깃에다가도 올리기
+        - tf-idf값 연동 로직 구현
+        - word2vec 값 출력 구현
