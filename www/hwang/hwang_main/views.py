@@ -18,5 +18,9 @@ class HwangMain(View):
             log = "error!  return code : %d Status : FAIL  %s  %s\n" % (e.returncode, e.stderr, e.output)
             f = open("./hwang_main/log/subprocess_error.log", 'a', encoding='utf-8')
             f.write(log)
+
+        origin_data = value
+        with open('./hwang_main/subprocess/test.txt', 'r', encoding='utf8') as f:
+            token_data = f.read()
         template_name = 'main/after_input_value.html'
-        return render(request, template_name)
+        return render(request, template_name, {'origin_data' : origin_data, 'token_data' : token_data})
