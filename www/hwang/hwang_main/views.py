@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.views import View
 import subprocess
 from django.views import generic
+import json
+from gensim.models import word2vec
+import gensim
 
 # Create your views here.
 class HwangMain(View):
@@ -22,5 +25,42 @@ class HwangMain(View):
         origin_data = value
         with open('./hwang_main/subprocess/test.txt', 'r', encoding='utf8') as f:
             token_data = f.read()
+
+        '''
+            여기서 로직 
+            1. 가지고온 토크나이즈 된 데이터와 tf-idf값 비교한다. (웬만하면 상위 10개만)
+                1-1. 여기서 로직.
+                    - 6~9월에 나온 데이터(배열)값을 dict로 만든다.
+                    - 즉, 중복 데이터 제거.
+                    - 이걸 json 파일로 저장하고 가지고 온다.
+                    - 이 json 파일과 토크나이즈 된 데이터와 비교하는 것.
+            2. 비교한 데이터 중 상위 3개만 관련된 연관 단어 키워드 시각화.
+
+
+        '''
+        tf_idf_data = {}
+        w2v = {}
+        token_data_array = token_data.split(" ")
+
+        with open('./hwang_main/subprocess/tf_idf_json.json', 'r') as f:
+            data = json.load(f)
+
+        for token in token_data_array:
+            if token in data:
+                if token in tf_idf_data: continue
+                else : tf_idf_data[token] = '1'
+
+        #이제 이 키값과  word2vec 진행.
+        w2v_model = word2vec.Word2Vec.load("./hwang_main/subprocess/word2vec.model")
+        for key, value in tf_idf_data.items():
+            word_dic = {}
+            try:
+                wordlist = w2v_model.most_similar(positive=[key])
+                for w in wordlist:
+                    word_dic[w[0]] = w[1]
+                w2v[key] = word_dic
+            except:
+                w2v[key] = word_dic
+        print(w2v)
         template_name = 'main/after_input_value.html'
-        return render(request, template_name, {'origin_data' : origin_data, 'token_data' : token_data})
+        return render(request, template_name, {'origin_data' : origin_data, 'token_data' : token_data, 'tf_idf':tf_idf_data, 'w2v':w2v})
