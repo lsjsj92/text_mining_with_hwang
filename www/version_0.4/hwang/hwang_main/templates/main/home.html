@@ -1,0 +1,42 @@
+{% extends 'main/header_section.html' %}
+{% load staticfiles %}
+
+
+{% block dashboard %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="blog_news">
+                    <p>단어를 입력하면 단어에 따른 연관 단어 분석이 출력됩니다</p>
+                    <form method="post" action="{% url 'hwangMain:input_value' %}">
+                    {% csrf_token %}
+                        <textarea placeholder="enter anything" name="python_value" class="noresize"></textarea>
+                        <button type="submit">검색!</button>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock dashboard %}
+
+
+{% block footer %}
+
+<section id="footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="copyright">
+                            <p>대진대학교</p>
+                        </div>
+                    </div>
+                </div>
+                <!--End of row-->
+            </div>
+            <!--End of container-->
+</section>
+
+{% endblock footer %}
+
