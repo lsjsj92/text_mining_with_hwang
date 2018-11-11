@@ -1,0 +1,45 @@
+{% extends 'main/header_section.html' %}
+{% load staticfiles %}
+
+
+{% block dashboard %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="blog_news">
+                    <p>정치, 경제, IT,  연예 기사 게시글을 붙여넣기 해주세요!</p>
+                    <form method="post" action="{% url 'hwangMain:input_value' %}">
+                    {% csrf_token %}
+                        <textarea placeholder="enter text" name="python_value" class="noresize"></textarea>
+                        <!-- <button type="submit">실행!</button> -->
+                          <div class="">
+                             <button type="submit" class="btn custom-btn">검색!</button>
+                          </div>
+                    </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock dashboard %}
+
+
+{% block footer %}
+
+<section id="footer">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-6">
+                        <div class="copyright">
+                            <p>대진대학교</p>
+                        </div>
+                    </div>
+                </div>
+                <!--End of row-->
+            </div>
+            <!--End of container-->
+</section>
+
+{% endblock footer %}
+

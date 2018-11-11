@@ -5,12 +5,12 @@
 '''
 
 mecab_words = []
-with open('word_dic_test.txt', encoding='utf-8-sig') as f:
+with open('word_dic.txt', encoding='utf-8-sig') as f:
     words = f.readlines()
     for word in words:
         word = word.strip()
         word = word+",,,0,NNP,*,F,"+word+",*,*,*,*"
         mecab_words.append(word)
-with open('user_dic_test.txt', 'a', encoding='utf-8') as f:
+with open('user_dic.txt', 'a', encoding='utf-8') as f:
     for word in mecab_words:
         f.write(word+"\n")
